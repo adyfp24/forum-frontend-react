@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Homepage() {
+function Beranda() {
   return (
     <div>homepage</div>
   )
 }
 
-export default Homepage
+export default Beranda
