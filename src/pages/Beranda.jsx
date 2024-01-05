@@ -2,12 +2,18 @@ import React from 'react';
 import Sidebar from '../includes/Sidebar';
 import Navbar from '../includes/Navbar';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Beranda() {
+  const navigate = useNavigate();
+  const api_token = localStorage.getItem('api_token');
+  if (!api_token) {
+    navigate('/');
+  }
   return (
     <div className='flex bg-gray-100 w-full max-h-screen'>
       <div className="flex bg-gray-100 w-full">
-        <Sidebar/>
+        <Sidebar />
         <div className="flex flex-col w-full text-gray-800">
           <Navbar />
           <main className="p-6 sm:p-10 space-y-6 overflow-y-auto">
@@ -21,7 +27,7 @@ function Beranda() {
             {/* ui forum sesuai minat */}
 
             <section className="flex w-full">
-              <button type='submit' onClick='' className="bg-white shadow rounded-lg w-full hover:drop-shadow-lg">              
+              <button type='submit' onClick='' className="bg-white shadow rounded-lg w-full hover:drop-shadow-lg">
                 <div className="flex items-center justify-between px-6 py-5 font-semibold border-b border-gray-100">
                   <span>Bidang Minat UI/UX</span>
                   <div className="inline-flex justify-center rounded-md px-1 -mr-1 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-600" id="options-menu" aria-haspopup="true" aria-expanded="true">
@@ -31,11 +37,11 @@ function Beranda() {
                     </svg>
                   </div>
                 </div>
-                <div className="overflow-y-auto" style={{maxHeight: '24rem'}}>
+                <div className="overflow-y-auto" style={{ maxHeight: '24rem' }}>
                   <ul className="p-6 space-y-6">
                     <li className="flex items-center">
                       <div className="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                        <img src="https://randomuser.me/api/portraits/women/82.jpg" alt="Annette Watson profile picture"/>
+                        <img src="https://randomuser.me/api/portraits/women/82.jpg" alt="Annette Watson profile picture" />
                       </div>
                       <span className="text-gray-600">Annette Watson</span>
                       <span className="ml-auto font-semibold">9.3</span>
@@ -46,9 +52,9 @@ function Beranda() {
             </section>
 
             <div className="mr-6">
-                <h2 className="text-gray-600 ml-0.5">&gt; Semua forum yang tersedia</h2>
-              </div>
-                  
+              <h2 className="text-gray-600 ml-0.5">&gt; Semua forum yang tersedia</h2>
+            </div>
+
             {/* ui all forum */}
 
             <section className="flex flex-col w-full">
@@ -66,7 +72,7 @@ function Beranda() {
                   <ul className="p-6 space-y-6">
                     <li className="flex items-center">
                       <div className="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                        <img src="https://randomuser.me/api/portraits/women/82.jpg" alt="Annette Watson profile picture"/>
+                        <img src="https://randomuser.me/api/portraits/women/82.jpg" alt="Annette Watson profile picture" />
                       </div>
                       <span className="text-gray-600">Annette Watson</span>
                       <span className="ml-auto font-semibold">9.3</span>
@@ -88,7 +94,7 @@ function Beranda() {
                   <ul className="p-6 space-y-6">
                     <li className="flex items-center">
                       <div className="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                        <img src="https://randomuser.me/api/portraits/women/82.jpg" alt="Annette Watson profile picture"/>
+                        <img src="https://randomuser.me/api/portraits/women/82.jpg" alt="Annette Watson profile picture" />
                       </div>
                       <span className="text-gray-600">Annette Watson</span>
                       <span className="ml-auto font-semibold">9.3</span>
@@ -110,7 +116,7 @@ function Beranda() {
                   <ul className="p-6 space-y-6">
                     <li className="flex items-center">
                       <div className="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
-                        <img src="https://randomuser.me/api/portraits/women/82.jpg" alt="Annette Watson profile picture"/>
+                        <img src="https://randomuser.me/api/portraits/women/82.jpg" alt="Annette Watson profile picture" />
                       </div>
                       <span className="text-gray-600">Annette Watson</span>
                       <span className="ml-auto font-semibold">9.3</span>

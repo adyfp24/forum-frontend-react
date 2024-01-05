@@ -8,14 +8,14 @@ function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const dataLogin = {
-        name: username,
+    const dataRegist = {
+        name: username,  
         email: email,
         password: password
     }
 
     const handleRegist = async () =>{
-        await axios.post('http://127.0.0.1:8000/api/v1/register',  dataLogin)
+        await axios.post('http://127.0.0.1:8000/api/v1/register',  dataRegist)
         .then(response => {
             console.log(response.data);
         }).catch(error => {
