@@ -4,17 +4,18 @@ import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
   const navigate = useNavigate()
+  const api_token = localStorage.getItem('api_token');
 
   const handleLogout = async () => {
     try {
       const api_token = localStorage.getItem('api_token');
-      if (api_token != null && api_token != undefined) {
+      if (api_token) {
         const headers = {
           'Authorization': `Bearer ${api_token}`,
           'Content-Type': 'application/json',
         }
         const response = await axios.post('http://127.0.0.1:8000/api/v1/logout', {} , { headers })
-        if(response.status == 200){
+        if(response.status === 200){
           console.log(response);
           localStorage.removeItem('api_token');
           navigate('/')

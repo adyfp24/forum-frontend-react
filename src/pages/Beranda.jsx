@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Sidebar from '../includes/Sidebar';
 import Navbar from '../includes/Navbar';
 import { Link } from 'react-router-dom';
@@ -7,9 +7,12 @@ import { useNavigate } from 'react-router-dom';
 function Beranda() {
   const navigate = useNavigate();
   const api_token = localStorage.getItem('api_token');
-  if (!api_token) {
-    navigate('/');
-  }
+  useEffect(()=>{
+    if (!api_token) {
+      navigate('/');
+    }
+  })
+
   return (
     <div className='flex bg-gray-100 w-full max-h-screen'>
       <div className="flex bg-gray-100 w-full">
@@ -27,7 +30,7 @@ function Beranda() {
             {/* ui forum sesuai minat */}
 
             <section className="flex w-full">
-              <button type='submit' onClick='' className="bg-white shadow rounded-lg w-full hover:drop-shadow-lg">
+              <button type='submit' className="bg-white shadow rounded-lg w-full hover:drop-shadow-lg">
                 <div className="flex items-center justify-between px-6 py-5 font-semibold border-b border-gray-100">
                   <span>Bidang Minat UI/UX</span>
                   <div className="inline-flex justify-center rounded-md px-1 -mr-1 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-600" id="options-menu" aria-haspopup="true" aria-expanded="true">

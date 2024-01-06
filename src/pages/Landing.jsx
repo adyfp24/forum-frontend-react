@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function Landing() {
   const api_token = localStorage.getItem('api_token');
-  if(api_token != null && auth_token != undefined){
-    navigate('/beranda');
-  }
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (api_token) {
+      navigate('/beranda');
+    }
+  })
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
 
   const dataLogin = {
     name: username,
@@ -21,11 +23,11 @@ function Landing() {
     try {
       const response = await axios.post('http://127.0.0.1:8000/api/v1/login', dataLogin);
       const api_token = response.data[0].api_token;
-      localStorage.setItem('api_token', api_token );
-      if(api_token != null && api_token != undefined){
+      if (api_token != null && api_token != undefined) {
+        localStorage.setItem('api_token', api_token);
         navigate('/beranda');
-      }else{
-       alert('gagal login');
+      } else {
+        alert('gagal login');
       }
     }
     catch (error) {
