@@ -3,8 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
-  const navigate = useNavigate()
-  const api_token = localStorage.getItem('api_token');
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
