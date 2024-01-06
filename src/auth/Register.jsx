@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
+    const navigate = useNavigate();
+    const api_token = localStorage.getItem('api_token');
+    useEffect(() => {
+        if(api_token){
+            navigate('/beranda')
+        }
+    })
 
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -15,12 +23,16 @@ function Register() {
     }
 
     const handleRegist = async () =>{
-        await axios.post('http://127.0.0.1:8000/api/v1/register',  dataRegist)
-        .then(response => {
-            console.log(response.data);
-        }).catch(error => {
-            console.log(error);
-        })
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/api/v1/register',  dataRegist)
+            if(response.status === 201){
+                alert('registrasi sukses');
+            }else{
+                alert('registrasi gagal')
+            }
+        } catch (error) {
+            alert('regist gagal')
+        }
     }
   return (
     <div>
